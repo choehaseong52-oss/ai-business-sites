@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>쇼핑몰 반품 손실 계산기 무료 | 반품률·반품 비용 계산</title>
+<meta name="description" content="온라인 쇼핑몰 반품률과 반품 1건당 배송비·재포장비를 입력해 월간 반품 손실과 주문 1건당 예상 손실을 계산하세요.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://ai-business-sites.pages.dev/07-return-loss-calculator/">
+<meta property="og:type" content="website"><meta property="og:title" content="쇼핑몰 반품 손실 계산기"><meta property="og:description" content="반품률과 반품 비용으로 월간 손실을 미리 계산하세요.">
+<style>
+*{box-sizing:border-box}body{font:16px/1.65 system-ui,-apple-system,sans-serif;background:#f5f7fb;color:#182238;max-width:850px;margin:0 auto;padding:28px 18px}
+h1{font-size:clamp(27px,5vw,38px);line-height:1.25}p{color:#536078}.panel,.result,.guide{background:#fff;border:1px solid #e2e7f0;border-radius:16px;padding:22px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}label{display:block;font-weight:650;font-size:14px}input{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #cbd3e1;border-radius:9px;font:inherit}
+button{margin-top:16px;padding:13px 20px;border:0;border-radius:9px;background:#3156d8;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px}.metric{background:#f1f4fb;border-radius:12px;padding:15px}.metric span{display:block;color:#58647a;font-size:13px}.metric strong{font-size:23px;color:#244bc4;overflow-wrap:anywhere}
+small{color:#68748a}a{color:#3156d8}.guide h2{font-size:20px;margin-top:20px}.guide h2:first-child{margin-top:0}
+</style></head><body>
+<p><a href="../">← 비즈도구 전체 목록</a></p>
+<header><h1>쇼핑몰 반품 손실 계산기</h1><p>반품이 늘어나면 왕복 배송비와 재포장 비용뿐 아니라 판매 기회와 상품 가치에도 영향을 줄 수 있습니다. 주문량과 반품률, 반품 1건당 비용을 입력해 예상 손실을 계산하세요.</p></header>
+<main>
+<section class="panel"><h2>운영 데이터 입력</h2><div class="grid">
+<label>월간 주문 건수<input id="orders" type="number" min="0" step="1" value="500"></label>
+<label>반품률 (%)<input id="rate" type="number" min="0" max="100" step="0.1" value="5"></label>
+<label>반품 1건당 왕복 배송비 (원)<input id="ship" type="number" min="0" step="100" value="6000"></label>
+<label>검수·재포장 비용 (원)<input id="pack" type="number" min="0" step="100" value="1000"></label>
+<label>상품 1건당 평균 매출총이익 (원)<input id="profit" type="number" min="0" step="100" value="8000"></label>
+<label>반품 후 재판매 불가 비율 (%)<input id="unsellable" type="number" min="0" max="100" step="0.1" value="10"></label>
+</div><button id="calc" type="button">반품 손실 계산하기</button></section>
+<section class="result" aria-live="polite"><h2>예상 결과</h2><div class="metrics">
+<div class="metric"><span>월 예상 반품 건수</span><strong id="returns">-</strong></div>
+<div class="metric"><span>월 배송·검수 비용</span><strong id="handling">-</strong></div>
+<div class="metric"><span>재판매 불가 상품 손실 추정</span><strong id="stockloss">-</strong></div>
+<div class="metric"><span>월 총 반품 손실 추정</span><strong id="total">-</strong></div>
+<div class="metric"><span>주문 1건당 평균 손실</span><strong id="perorder">-</strong></div>
+</div><p id="msg" role="status"></p><small>반품 건수는 주문 건수 × 반품률로 추정합니다. 재판매 불가 손실은 해당 비율의 상품에서 입력한 평균 매출총이익이 사라진다고 가정합니다.</small></section>
+<section class="guide">
+<h2>반품 손실은 어떻게 계산하나요?</h2>
+<p>월간 예상 반품 건수에 반품 1건당 왕복 배송비와 검수·재포장 비용을 곱해 운영 비용을 추정합니다. 여기에 재판매가 불가능한 상품의 예상 매출총이익 손실을 더합니다.</p>
+<h2>반품률 계산 방법</h2><p>반품률은 같은 기간의 반품 주문 건수를 전체 주문 건수로 나눈 뒤 100을 곱해 계산합니다. 주문 기준인지 상품 수량 기준인지 내부 지표의 기준을 일관되게 유지하세요.</p>
+<h2>결과 해석 시 주의사항</h2><p>이 계산기는 단순 추정 도구입니다. 실제 손실은 반품 사유, 상품 상태, 재입고 가능 여부, 판매자·구매자 귀책, 환불 정책, 택배 계약 및 상품별 마진에 따라 달라집니다. 이미 환불한 상품의 매출액 전체를 손실로 중복 계산하지 않도록 주의하고, 실제 정산·재고 자료와 비교하세요.</p>
+</section></main>
+<script>
+const $=id=>document.getElementById(id),money=n=>Math.round(n).toLocaleString('ko-KR')+'원';
+function calc(){
+ const n=Number($('orders').value),r=Number($('rate').value),s=Number($('ship').value),p=Number($('pack').value),m=Number($('profit').value),u=Number($('unsellable').value);
+ if([n,r,s,p,m,u].some(x=>!Number.isFinite(x)||x<0)||r>100||u>100){$('msg').textContent='주문 건수와 비용은 0 이상, 반품률과 재판매 불가 비율은 0~100 사이로 입력하세요.';return}
+ const count=n*r/100,handling=count*(s+p),stock=count*u/100*m,total=handling+stock;
+ $('returns').textContent=count.toLocaleString('ko-KR',{maximumFractionDigits:1})+'건';
+ $('handling').textContent=money(handling);$('stockloss').textContent=money(stock);$('total').textContent=money(total);$('perorder').textContent=money(n?total/n:0);
+ $('msg').textContent='입력한 조건에서는 월 '+Math.round(count).toLocaleString('ko-KR')+'건의 반품이 예상됩니다. 반품 사유와 재판매 가능 여부를 함께 추적하면 비용 절감 지점을 찾는 데 도움이 됩니다.';
+}
+$('calc').addEventListener('click',calc);document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calc));calc();
+</script></body></html>
