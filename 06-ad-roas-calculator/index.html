@@ -32,12 +32,12 @@ small{color:#68748a}.guide h2{font-size:20px;margin-top:20px}.guide h2:first-chi
 <section class="panel" aria-label="계산 입력">
 <h2>상품 및 비용 입력</h2>
 <div class="grid">
-<label>상품 판매가 (원)<input id="price" type="number" min="0" step="100" value="30000"></label>
-<label>상품 원가 (원)<input id="cost" type="number" min="0" step="100" value="10000"></label>
-<label>배송비 부담액 (원)<input id="shipping" type="number" min="0" step="100" value="3000"></label>
-<label>포장·기타 비용 (원)<input id="other" type="number" min="0" step="100" value="500"></label>
-<label>플랫폼·결제 수수료 (%)<input id="fee" type="number" min="0" max="100" step="0.1" value="6"></label>
-<label>목표 순이익 (원/건)<input id="target" type="number" min="0" step="100" value="5000"></label>
+<label>상품 판매가 (원)<input id="price" type="number" min="0" step="100" value=""0"></label>
+<label>상품 원가 (원)<input id="cost" type="number" min="0" step="100" value=""0"></label>
+<label>배송비 부담액 (원)<input id="shipping" type="number" min="0" step="100" value=""0"></label>
+<label>포장·기타 비용 (원)<input id="other" type="number" min="0" step="100" value=""0"></label>
+<label>플랫폼·결제 수수료 (%)<input id="fee" type="number" min="0" max="100" step="0.1" value=""0"></label>
+<label>목표 순이익 (원/건)<input id="target" type="number" min="0" step="100" value=""0"></label>
 </div>
 <button id="calculate" type="button">ROAS 계산하기</button>
 </section>
@@ -76,7 +76,6 @@ function calc(){
  $('goal').textContent=profit>t?(p/(profit-t)*100).toFixed(1)+'%':'목표 달성 불가';
  $('message').textContent=profit<=0?'현재 입력값에서는 광고비를 쓰기 전부터 이익이 없거나 손실입니다. 비용 또는 판매가를 다시 확인하세요.':profit<=t?'광고비를 제외한 이익이 목표 순이익 이하입니다. 목표 이익이나 비용 구조를 조정하세요.':'목표 순이익을 남기려면 건당 광고비를 '+won(profit-t)+' 이하로 관리해야 합니다.';
 }
-$('calculate').addEventListener('click',calc);document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));calc();
-</script>
+$('calculate').addEventListener('click',()=>{calc();document.querySelector('.result')?.scrollIntoView({behavior:'smooth',block:'start'})});</script>
 </body>
 </html>
