@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>쇼핑몰 월 순이익 계산기 무료 | 매출·비용 분석</title>
+<meta name="description" content="월 매출, 상품 원가, 플랫폼 수수료, 광고비, 고정비를 입력해 쇼핑몰 예상 순이익과 순이익률을 계산하세요.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://ai-business-sites.pages.dev/08-monthly-profit-calculator/">
+<meta property="og:type" content="website"><meta property="og:title" content="쇼핑몰 월 순이익 계산기"><meta property="og:description" content="월 매출과 운영비를 입력해 예상 순이익을 간편하게 계산하세요.">
+<style>
+*{box-sizing:border-box}body{font:16px/1.65 system-ui,-apple-system,sans-serif;background:#f5f7fb;color:#182238;max-width:850px;margin:0 auto;padding:28px 18px}
+h1{font-size:clamp(27px,5vw,38px);line-height:1.25}p{color:#536078}.panel,.result,.guide{background:#fff;border:1px solid #e2e7f0;border-radius:16px;padding:22px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}label{display:block;font-weight:650;font-size:14px}input{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #cbd3e1;border-radius:9px;font:inherit}
+button{margin-top:16px;padding:13px 20px;border:0;border-radius:9px;background:#3156d8;color:white;font:inherit;font-weight:700;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px}.metric{background:#f1f4fb;border-radius:12px;padding:15px}.metric span{display:block;color:#58647a;font-size:13px}.metric strong{font-size:23px;color:#244bc4;overflow-wrap:anywhere}
+small{color:#68748a}a{color:#3156d8}.guide h2{font-size:20px;margin-top:20px}.guide h2:first-child{margin-top:0}
+</style></head><body>
+<p><a href="../">← 비즈도구 전체 목록</a></p>
+<header><h1>쇼핑몰 월 순이익 계산기</h1><p>월 매출만으로 사업이 잘되고 있는지 판단하기는 어렵습니다. 상품 원가, 플랫폼 수수료, 광고비, 배송·포장비와 월 고정비를 함께 입력해 예상 영업 순이익을 확인하세요.</p></header>
+<main>
+<section class="panel"><h2>월간 매출·비용 입력</h2><div class="grid">
+<label>월 총매출 (원)<input id="sales" type="number" min="0" step="10000" value="10000000"></label>
+<label>상품 매입·제조 원가 (원)<input id="cogs" type="number" min="0" step="10000" value="4000000"></label>
+<label>플랫폼·결제 수수료 (원)<input id="fees" type="number" min="0" step="1000" value="500000"></label>
+<label>월 광고비 (원)<input id="ads" type="number" min="0" step="1000" value="1000000"></label>
+<label>배송·포장 등 변동비 (원)<input id="variable" type="number" min="0" step="1000" value="700000"></label>
+<label>월 고정비 (원)<input id="fixed" type="number" min="0" step="1000" value="1000000"></label>
+</div><button id="calc" type="button">월 순이익 계산하기</button></section>
+<section class="result" aria-live="polite"><h2>월간 손익 결과</h2><div class="metrics">
+<div class="metric"><span>총 비용</span><strong id="costs">-</strong></div>
+<div class="metric"><span>예상 순이익</span><strong id="profit">-</strong></div>
+<div class="metric"><span>순이익률</span><strong id="margin">-</strong></div>
+<div class="metric"><span>매출 대비 광고비 비율</span><strong id="adshare">-</strong></div>
+</div><p id="msg" role="status"></p><small>입력한 항목만 반영한 단순 운영 손익 추정치이며, 세금·이자·감가상각·반품 등 누락 비용은 포함되지 않을 수 있습니다.</small></section>
+<section class="guide">
+<h2>쇼핑몰 순이익 계산 방법</h2><p>예상 순이익은 월 총매출에서 상품 원가, 플랫폼·결제 수수료, 광고비, 배송·포장 등 변동비, 월 고정비를 차감해 계산합니다. 순이익률은 예상 순이익을 총매출로 나눈 비율입니다.</p>
+<h2>매출과 이익을 함께 봐야 하는 이유</h2><p>매출이 늘어도 광고비나 수수료, 배송비가 더 빠르게 증가하면 실제 남는 금액은 줄어들 수 있습니다. 월별로 같은 기준의 매출과 비용을 기록하고 순이익률 변화를 비교해 보세요.</p>
+<h2>정확도를 높이는 방법</h2><p>환불·취소, 쿠폰 할인, 부가세, 인건비, 임대료, 결제 수수료 및 플랫폼별 정산 항목을 실제 장부 기준으로 분리해 입력하세요. 매출에 부가세가 포함되어 있다면 회계상 매출과 동일한 기준으로 맞춰야 합니다. 이 도구는 세무·회계 자문을 대체하지 않습니다.</p>
+</section></main>
+<script>
+const $=id=>document.getElementById(id),won=n=>Math.round(n).toLocaleString('ko-KR')+'원';
+function calc(){
+ const sales=Number($('sales').value),cogs=Number($('cogs').value),fees=Number($('fees').value),ads=Number($('ads').value),variable=Number($('variable').value),fixed=Number($('fixed').value);
+ if([sales,cogs,fees,ads,variable,fixed].some(v=>!Number.isFinite(v)||v<0)||sales<=0){$('msg').textContent='월 매출은 0보다 커야 하며 모든 비용은 0 이상의 숫자로 입력하세요.';return}
+ const total=cogs+fees+ads+variable+fixed,profit=sales-total;
+ $('costs').textContent=won(total);$('profit').textContent=won(profit);$('margin').textContent=(profit/sales*100).toFixed(1)+'%';$('adshare').textContent=(ads/sales*100).toFixed(1)+'%';
+ $('msg').textContent=profit>=0?'입력한 비용 기준으로 월 '+won(profit)+'의 이익이 예상됩니다.':'입력한 비용 기준으로 월 '+won(Math.abs(profit))+'의 손실이 예상됩니다. 비용 구조와 가격을 점검하세요.';
+}
+$('calc').addEventListener('click',calc);document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calc));calc();
+</script></body></html>
