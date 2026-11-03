@@ -21,12 +21,12 @@ small{color:#68748a}a{color:#3156d8}.guide h2{font-size:20px;margin-top:20px}.gu
 <header><h1>쇼핑몰 월 순이익 계산기</h1><p>월 매출만으로 사업이 잘되고 있는지 판단하기는 어렵습니다. 상품 원가, 플랫폼 수수료, 광고비, 배송·포장비와 월 고정비를 함께 입력해 예상 영업 순이익을 확인하세요.</p></header>
 <main>
 <section class="panel"><h2>월간 매출·비용 입력</h2><div class="grid">
-<label>월 총매출 (원)<input id="sales" type="number" min="0" step="10000" value=""0"></label>
-<label>상품 매입·제조 원가 (원)<input id="cogs" type="number" min="0" step="10000" value=""0"></label>
-<label>플랫폼·결제 수수료 (원)<input id="fees" type="number" min="0" step="1000" value=""0"></label>
-<label>월 광고비 (원)<input id="ads" type="number" min="0" step="1000" value=""0"></label>
-<label>배송·포장 등 변동비 (원)<input id="variable" type="number" min="0" step="1000" value=""0"></label>
-<label>월 고정비 (원)<input id="fixed" type="number" min="0" step="1000" value=""0"></label>
+<label>월 총매출 (원)<input id="sales" type="number" min="0" step="10000" value="0"></label>
+<label>상품 매입·제조 원가 (원)<input id="cogs" type="number" min="0" step="10000" value="0"></label>
+<label>플랫폼·결제 수수료 (원)<input id="fees" type="number" min="0" step="1000" value="0"></label>
+<label>월 광고비 (원)<input id="ads" type="number" min="0" step="1000" value="0"></label>
+<label>배송·포장 등 변동비 (원)<input id="variable" type="number" min="0" step="1000" value="0"></label>
+<label>월 고정비 (원)<input id="fixed" type="number" min="0" step="1000" value="0"></label>
 </div><button id="calc" type="button">월 순이익 계산하기</button></section>
 <section class="result" aria-live="polite"><h2>월간 손익 결과</h2><div class="metrics">
 <div class="metric"><span>총 비용</span><strong id="costs">-</strong></div>
@@ -48,5 +48,5 @@ function calc(){
  $('costs').textContent=won(total);$('profit').textContent=won(profit);$('margin').textContent=(profit/sales*100).toFixed(1)+'%';$('adshare').textContent=(ads/sales*100).toFixed(1)+'%';
  $('msg').textContent=profit>=0?'입력한 비용 기준으로 월 '+won(profit)+'의 이익이 예상됩니다.':'입력한 비용 기준으로 월 '+won(Math.abs(profit))+'의 손실이 예상됩니다. 비용 구조와 가격을 점검하세요.';
 }
-$('calc').addEventListener('click',calc);
+$('calc').addEventListener('click',()=>{calc();document.querySelector('.result')?.scrollIntoView({behavior:'smooth',block:'start'})});
 </script></body></html>
