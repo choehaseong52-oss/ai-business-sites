@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ai-business-sites.pages.dev/sitemap.xml
+Sitemap: https://sellerlab.sellerlab.workers.dev/sitemap.xml
