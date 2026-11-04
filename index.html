@@ -40,6 +40,7 @@ header{border-bottom:1px solid var(--line);background:rgba(247,246,242,.96)}
 .nav-links a{text-decoration:none}.nav-links a:hover{color:var(--accent)}
 .nav-links .nav-cta{color:var(--accent);font-weight:800}
 .hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+.insight-promo{padding:34px 0 0}.insight-promo a{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.75fr);gap:28px;align-items:center;text-decoration:none;background:#080808;color:#eee5dc;padding:16px 22px}.insight-promo img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}.insight-copy{padding:10px 12px 10px 0}.insight-copy small{color:#c58b75;letter-spacing:1.5px;font-size:10px;font-weight:800}.insight-copy strong{display:block;font-size:21px;line-height:1.45;margin:9px 0}.insight-copy span{display:block;color:#c7c2bb;font-size:12px;line-height:1.8}.insight-copy em{display:inline-block;margin-top:14px;color:#fff;font-style:normal;font-size:12px;font-weight:800}@media(max-width:760px){.insight-promo a{grid-template-columns:1fr;gap:8px}.insight-copy{padding:0 5px 10px}.insight-copy strong{font-size:18px}}
 .hero-grid{display:grid;grid-template-columns:1fr 300px;gap:65px;align-items:end}
 .eyebrow{font-size:11px;letter-spacing:1.7px;color:var(--accent);font-weight:850}
 h1{font-size:clamp(38px,5vw,58px);line-height:1.22;letter-spacing:-2.8px;margin:17px 0 18px;font-weight:800}
@@ -93,7 +94,7 @@ footer{background:var(--dark);color:#c9c9be;padding:27px 0;font-size:11px}
 <div class="topline"></div>
 <header><div class="wrap nav">
 <a class="brand" href="./"><img class="brand-logo" src="/favicon.svg?v=sl-wordmark-01" alt="SL 로고"><span class="brand-wordmark">SELLER LAB</span></a>
-<nav class="nav-links"><a href="#tools">계산 도구</a><a href="blog/">셀러 인사이트</a><a href="about.html">셀러랩 소개</a><a class="nav-cta" href="#tools">필요한 계산 찾기 ↗</a></nav>
+<nav class="nav-links"><a href="#tools">계산 도구</a><a href="blog/">홍보 채널</a><a href="about.html">셀러랩 소개</a><a class="nav-cta" href="#tools">필요한 계산 찾기 ↗</a></nav>
 </div></header>
 <section class="hero"><div class="wrap hero-grid">
 <div>
@@ -104,6 +105,7 @@ footer{background:var(--dark);color:#c9c9be;padding:27px 0;font-size:11px}
 </div>
 <aside class="hero-note"><strong>셀러랩 사용 안내</strong>별도 설치나 회원가입 없이 이용할 수 있습니다. 필요한 값을 입력하고 계산 결과를 확인하세요. 입력한 값은 각 도구의 안내 기준에 따라 처리됩니다.</aside>
 </div></section>
+<section class="wrap insight-promo" aria-label="SELLER LAB INSIGHT 공식 블로그"><a href="blog/"><img src="/blog/seller-lab-insight-banner.svg" alt="SELLER LAB INSIGHT — Smarter Business, Better Growth."><div class="insight-copy"><small>SELLER LAB · OFFICIAL CHANNEL</small><strong>온라인 셀러를 위한 실전 인사이트</strong><span>상품 소싱부터 가격 전략, 광고 운영과 쇼핑몰 관리까지. SELLER LAB의 공식 콘텐츠 채널을 만나보세요.</span><em>공식 블로그 채널 보기 ↗</em></div></a></section>
 <main class="wrap">
 <div class="section-top"><div><div class="section-index">01 / TOOLBOX</div><h2 id="tools">판매하면서 자주 하는 계산</h2></div><p class="section-desc">필요한 항목을 골라 바로 사용하세요.</p></div>
 <div class="search-row"><label for="toolSearch">도구 이름이나 키워드로 찾기</label><input class="search" id="toolSearch" type="search" placeholder="예: 마진, 광고비, 택배비" aria-label="도구 검색"></div>
