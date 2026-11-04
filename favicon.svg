@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="SELLER LAB">
-  <rect width="96" height="96" rx="22" fill="#242923"/>
-  <path d="M67 25.5C60.8 19.8 49.5 19 40.8 23.1C32.8 26.9 29.5 34.4 33.4 40.8C36.6 46 44.2 48.1 52.3 50.2C60.6 52.3 67.6 55 67.6 62.1C67.6 70.1 58.8 76 48.1 76C39.5 76 31.8 72.8 27.5 67.8" fill="none" stroke="#F5F5F2" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M67 25.5C71.1 29.2 73.2 33.3 72.8 37.2" fill="none" stroke="#A84C35" stroke-width="8.5" stroke-linecap="round"/>
-  <circle cx="27.5" cy="67.8" r="4.25" fill="#A84C35"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="SELLER LAB Flow S">
+  <rect width="96" height="96" rx="19" fill="#242424"/>
+  <path d="M35.5 25.8c0-5.4 4.5-9.3 10.3-9.3h32.8L66.8 28.4c-2.2 2.2-5.2 3.4-8.3 3.4H43.1c-3.1 0-5.8 1.1-7.6 3.1z" fill="#E87945"/>
+  <path d="M34.9 30.5c-5.4 1.8-8.8 6-8.8 11.3 0 7.2 5.8 11.7 14.5 11.7h15.8c6.2 0 10.3 2.4 10.3 6.8 0 2.7-1.5 5.1-4.3 6.7 6.8-1.7 10.9-6.2 10.9-12.1 0-7.5-6-12.3-15.3-12.3H42.8c-5.5 0-8.7-2.1-8.7-5.8 0-2.5 1.4-4.7 4.1-6.3z" fill="#F5F3ED"/>
+  <path d="M35.2 59.8h25.1c5.3 0 8.6-1.8 10.7-5.3 1.9 7.2-3.6 13.7-12 13.7H18.2z" fill="#E87945"/>
 </svg>
